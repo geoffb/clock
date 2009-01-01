@@ -1,0 +1,5 @@
+h1. Desktop Clock
+
+Created for the "May 2003 Coding Challenge":http://www.xtremevbtalk.com/showthread.php?t=76611 on the "Xtreme VB Talk Forums":http://www.xtremevbtalk.com/.
+
+Coded in VB6 with a web based UI via the Internet Explorer control.

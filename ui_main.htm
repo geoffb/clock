@@ -1,0 +1,269 @@
+<html>
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="ui_style.css">
+		<script language=vbscript src=ui_script.vbs></script>
+	</head>
+
+	<body oncontextmenu=CancelEvent>
+
+<!-- *** CLOCK DISPLAY *** -->
+
+		<div class="top">
+
+			<table style='width:100%;' cellspacing=0 cellpadding=0>
+				<tr>
+					<td>
+						<span name=spnDate id=spnDate style='color:eeeeee;font-size:13px;'>
+							&nbsp;
+						</span>
+					</td>
+					<td align=right>
+						<a class=headlink href="cp://mintosystray">System Tray</a>&nbsp;&nbsp;
+					</td>
+				</tr>
+			</table>
+
+			<span name=spnTime id=spnTime style='color:eeeeee;font-size:30px;'>
+				&nbsp;
+			</span>
+
+		</div>
+
+<!-- *** MENU BAR *** -->
+
+		<div class="menubar">
+
+			<a class="menulink" id="aAlerts" href="cp://alerts">Alerts</a> |
+			<a class="menulink" id="aOpts" href="cp://options">Options</a> |
+			<a class="menulink" id="aAbout" href="cp://about">About</a>
+			<!-- <a class="menulink" id="aHelp" href="cp://help">Help</a> -->
+
+		</div>
+
+<!-- *** BEGIN BODY SECTIONS *** -->
+
+		<div class="body">
+
+	<!-- *** ABOUT *** -->
+
+			<div id=divAbout class="section" style="display:none;">
+				By Geoffrey Blair<br>
+				<br>
+				Created for the May 2003 Coding Challenge<br>
+				Extreme Visual Basic Forum<br>
+				<a href="http://www.visualbasicforum.com" target="_blank">http://www.visualbasicforum.com</a>
+			</div>
+
+	<!-- *** NEW ALERT *** -->
+
+			<div id=divEditAlert class="section" style="display:none;">
+
+				<div class="section_scroll">
+
+					<form name=frmNewAlert id=frmNewAlert method=post action="cp://null">
+
+						<b>Alert Date/Time:</b><br>
+
+						Date:
+						<select name=cmbMonth id=cmbMonth>
+							<option value=1>January
+							<option value=2>February
+							<option value=3>March
+							<option value=4>April
+							<option value=5>May
+							<option value=6>June
+							<option value=7>July
+							<option value=8>August
+							<option value=9>September
+							<option value=10>October
+							<option value=11>November
+							<option value=12>December
+						</select>
+
+						<select name=cmbDay id=cmbDay>
+							<option value=1>1
+							<option value=2>2
+							<option value=3>3
+							<option value=4>4
+							<option value=5>5
+							<option value=6>6
+							<option value=7>7
+							<option value=8>8
+							<option value=9>9
+							<option value=10>10
+							<option value=11>11
+							<option value=12>12
+							<option value=13>13
+							<option value=14>14
+							<option value=15>15
+							<option value=16>16
+							<option value=17>17
+							<option value=18>18
+							<option value=19>19
+							<option value=20>20
+							<option value=21>21
+							<option value=22>22
+							<option value=23>23
+							<option value=24>24
+							<option value=25>25
+							<option value=26>26
+							<option value=27>27
+							<option value=28>28
+							<option value=29>29
+							<option value=30>30
+							<option value=31>31
+						</select>
+
+						<input type=text name=txtYear id=txtYear value=2003 style='width:40px;' maxlength=4>
+						<br>
+
+						Time:
+						<select name=cmbHour id=cmbHour>
+							<option value=1>1
+							<option value=2>2
+							<option value=3>3
+							<option value=4>4
+							<option value=5>5
+							<option value=6>6
+							<option value=7>7
+							<option value=8>8
+							<option value=9>9
+							<option value=10>10
+							<option value=11>11
+							<option value=12>12
+						</select>
+
+						<select name=cmbMinute id=cmbMinute>
+							<option value=00>00
+							<option value=05>05
+							<option value=10>10
+							<option value=15>15
+							<option value=20>20
+							<option value=25>25
+							<option value=30>30
+							<option value=35>35
+							<option value=40>40
+							<option value=45>45
+							<option value=50>50
+							<option value=55>55
+						</select>
+
+						<select name=cmbAmPm id=cmbAmPm>
+							<option value=AM>AM
+							<option value=PM>PM
+						</select>
+
+						<br><br>
+
+						<b>Alert Type:</b><br>
+						<input type=radio name=optAlertType id=optAlertType value=0 checked onclick="cmbRecur.disabled = (Not optAlertType(1).checked)">Single<br>
+						<input type=radio name=optAlertType id=optAlertType value=1 onclick="cmbRecur.disabled = (Not optAlertType(1).checked)">Recurring
+						&nbsp;&nbsp;
+						<select name=cmbRecur id=cmbRecur disabled>
+							<option value=0>Daily
+							<option value=1>Weekly
+							<option value=2>Monthly
+							<option value=3>Yearly
+						</select>
+						<br><br>
+
+						<b>Alert Text:</b><br>
+						<textarea name=txtAlertText id=txtAlertText style='width:300px;height:80px;'></textarea>
+
+					</form>
+
+				</div>
+
+				<div>
+					<hr>
+					<button class="button1" onclick='window.navigate "cp://savealert"'>Save Alert</button>
+				</div>
+
+			</div>
+
+	<!-- *** ALERTS DISPLAY *** -->
+
+			<div id=divAlerts class="section" style="display:none;">
+
+				<div class="section_scroll">
+
+					<table name=tblAlerts id=tblAlerts cellspacing=2 cellpadding=2 style='table-layout:fixed;width:98%;'>
+
+						<colgroup>
+							<col width=30px align=center>
+							<col width=90px align=center>
+							<col>
+						</colgroup>
+
+						<tr class=tr1 style='display:none;'>
+							<td><input type=checkbox></td>
+							<td>&nbsp;</td>
+							<td valign=top>&nbsp;</td>
+						</tr>
+
+					</table>
+
+					<span name=spnNoAlerts id=spnNoAlerts>No Alerts defined.</span>
+
+				</div>
+
+				<div>
+					<hr>
+					<button class="button1" onclick='window.navigate "cp://newalert"'>New Alert</button>&nbsp;&nbsp;
+					<button class="button1" onclick='window.navigate "cp://deletealert"'>Delete Alert</button>&nbsp;&nbsp;
+				</div>
+
+			</div>
+
+	<!-- *** OPTIONS *** -->
+
+			<div id=divOpts class="section" style="display:none;">
+
+				<div class="section_scroll">
+
+					<b>Time Format:</b><br>
+					<input type=radio name=optFormat id=optFormat value=0>Standard (12 hour)<br>
+					<input type=radio name=optFormat id=optFormat value=1>Military (24 hour)<br>
+					<br>
+
+					<b>Program Behavior:</b><br>
+					<!-- <input type=checkbox name=chkStartOnWinLoad id=chkStartOnWinLoad>Start program when Windows starts<br> -->
+					<input type=checkbox name=chkPlaySound id=chkPlaySound>Play sound on alerts<br>
+					&nbsp;&nbsp;&nbsp;File: <input style='height:20px;width:190px;font-size:10px;font-family:verdana;' type=text name=txtWavFile id=txtWavFile>&nbsp;<button style="height:22px;font-size:11px;font-family:verdana;font-weight:bold;color:666666;cursor:hand;" onclick='window.navigate "cp://browse"'>Browse</button>
+
+				</div>
+
+				<div>
+					<hr>
+					<button class="button1" onclick='window.navigate "cp://saveoptions"'>Save Options</button>
+				</div>
+
+			</div>
+
+	<!-- *** HELP *** -->
+
+			<!--
+
+			<div id=divHelp style="scrollbar-base-color:5776C4;scrollbar-arrow-color:eeeeee;width:100%;height:258px;position:absolute;top:0px;left:0px;padding:6px;display:none;overflow-y:auto;">
+
+				<a href=#help_jump_1>Topic 1</a><br>
+
+				<hr>
+
+				<a name=help_jump_1></a><b>Topic 1</b><br>
+				This is the text. This is the text. This is the text. This is the text.<br>
+				<br>
+
+			</div>
+
+			-->
+
+		</div>
+
+<!-- *** END BODY SECTIONS *** -->
+
+	</body>
+
+</html>
+

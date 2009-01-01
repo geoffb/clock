@@ -1,0 +1,84 @@
+body {
+	margin:0px;
+	overflow:hidden;
+	background-color:D9E1FF;
+	font-family:verdana;
+	font-size:12px;
+}
+
+td {
+	font-family:verdana;
+	font-size:12px;
+	padding:4px;
+}
+
+input {
+	font-family:verdana;
+	font-size:11px;
+	margin:2px;
+}
+
+select {
+	font-family:verdana;
+	font-size:11px;
+	margin:2px;
+}
+
+a {
+	color:blue;
+}
+
+a.menulink {
+	color:ffffff;
+}
+
+a.headlink {
+	color:cccccc;
+	font-size:11px;
+}
+
+tr.tr1 {
+	background-color:ffffff;
+}
+
+button.button1 {
+	height:22px;
+	font-size:11px;
+	font-family:verdana;
+	font-weight:bold;
+	color:666666;
+	cursor:hand;
+}
+
+div.top {
+	padding:3px;
+	background-color:000099;
+	font-family:verdana;
+}
+
+div.menubar {
+	color:455F9F;
+	font-size:12px;
+	padding:6px;
+	background-color:5776C4;
+	font-family:verdana;
+}
+
+div.body {
+	position:relative;
+}
+
+div.section {
+	position:absolute;
+	top:0px;
+	left:0px;
+	padding:6px;
+}
+
+div.section_scroll {
+	overflow-x:hidden;
+	overflow-y:auto;
+	height:200px;
+	scrollbar-base-color:5776C4;
+	scrollbar-arrow-color:eeeeee;
+}
